@@ -1,4 +1,3 @@
-import { NotifyIcon, Icon, Menu } from "not-the-systray";
 const HID = require('node-hid'),
     CORSAIR_VID = 0x1B1C,
     KNOWN_PIDS = {
