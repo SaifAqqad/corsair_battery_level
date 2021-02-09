@@ -34,12 +34,12 @@ const DATA_REQ = [0xC9, 0x64],
         tooltip: "Corsair battery level",
         onSelect: (event) => show_menu(event)
     },
-    tray = new NotifyIcon(TRAY_OPTIONS),
     MENU_ITEMS = [
         { id: 1, text: "Exit" },
-    ],
-    menu = new Menu(MENU_ITEMS);
-let device_info = null;
+    ];
+let tray = new NotifyIcon(TRAY_OPTIONS),
+    menu = new Menu(MENU_ITEMS),
+    device_info = null;
 init();
 
 function init() {
@@ -68,8 +68,7 @@ function show_menu(event) {
 }
 
 function get_device() {
-    let dList = HID.devices(),
-        hidDevice, infoObj;
+    let dList = HID.devices(), hidDevice, infoObj;
     for (let deviceObj of dList) {
         if (deviceObj.vendorId !== CORSAIR_VID || KNOWN_PIDS[deviceObj.productId] === undefined)
             continue;
