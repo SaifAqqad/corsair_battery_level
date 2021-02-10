@@ -57,27 +57,29 @@ const DATA_REQ = [0xC9, 0x64],
     ];
 let tray = new NotifyIcon(TRAY_OPTIONS),
     menu = new Menu(MENU_ITEMS),
-    device_info = null;
+    device_info = null,
+    device_hid = null;
 init();
 
 function init() {
-    let [hidDevice, infoObj] = get_device();
-    if (!hidDevice) {
+    [device_hid, device_info] = get_device();
+    if (!device_hid) {
         console.error("could not find a device");
         process.exit(1);
     }
-    device_info = infoObj;
     device_info.full_name = `${device_info.manufacturer} ${KNOWN_PIDS[device_info.productId]}`
-    hidDevice.setNonBlocking(1);
-    hidDevice.on('data', handle_data);
+    device_hid.setNonBlocking(1);
+    device_hid.on('data', handle_data);
     process.stdout.write(`Found Device: ${device_info.full_name}\n`);
     process.stdout.write(`\tBattery level\t\tCurrent state\n`);
-    hidDevice.resume();
+    device_hid.resume();
 }
 
 function show_menu(event) {
-    if (!event.rightButton)
-        return;
+    if (!event.rightButton){
+        device_hid.write(DATA_REQ);
+        return
+    }
     const ret = menu.showSync(event.mouseX, event.mouseY);
     if (ret === 1) {
         tray.remove()
