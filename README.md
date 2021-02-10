@@ -34,4 +34,4 @@ you can also add a shortcut to `app.vbs` in `C:\Users\saifo\AppData\Roaming\Micr
 
 ##
 
-This is only an attempt to rewrite a version of  https://github.com/mx0c/Corsair-Void-Pro-Battery-Overlay in node, mostly as an exercise. so most credits to them.
+This is just an attempt to rewrite a version of [mx0c/Corsair-Void-Pro-Battery-Overlay](https://github.com/mx0c/Corsair-Void-Pro-Battery-Overlay) in node, mostly as an exercise. so all credits to them.
