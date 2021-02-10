@@ -2,6 +2,9 @@
 Displays the current state and battery level of a Corsair headset and adds a tray icon on the task bar.
 
 It should work with most corsair headsets.
+
+![](https://user-images.githubusercontent.com/47293197/107494250-3c401b00-6b97-11eb-902e-2fbc47553d89.png)
+
 ## Requirments:
 * Windows 10 (64 bit)
 * Node (and npm)
@@ -31,4 +34,4 @@ you can also add a shortcut to `app.vbs` in `C:\Users\saifo\AppData\Roaming\Micr
 
 ##
 
-This is only an attempt to rewrite a version of  https://github.com/mx0c/Corsair-Void-Pro-Battery-Overlay in node, mostly as an exercise. so most credits to them.
+This is just an attempt to rewrite a version of [mx0c/Corsair-Void-Pro-Battery-Overlay](https://github.com/mx0c/Corsair-Void-Pro-Battery-Overlay) in node, mostly as an exercise. so all credits to them.
