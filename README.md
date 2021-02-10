@@ -2,6 +2,9 @@
 Displays the current state and battery level of a Corsair headset and adds a tray icon on the task bar.
 
 It should work with most corsair headsets.
+
+![](https://user-images.githubusercontent.com/47293197/107494250-3c401b00-6b97-11eb-902e-2fbc47553d89.png)
+
 ## Requirments:
 * Windows 10 (64 bit)
 * Node (and npm)
