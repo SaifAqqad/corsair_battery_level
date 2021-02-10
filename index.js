@@ -24,10 +24,15 @@ const DATA_REQ = [0xC9, 0x64],
         charging: Icon.load("icons/battery-charging.ico", Icon.small),
         10: Icon.load("icons/battery-wireless.ico", Icon.small),
         9: Icon.load("icons/battery-wireless-90.ico", Icon.small),
+        8: Icon.load("icons/battery-wireless-80.ico", Icon.small),
         7: Icon.load("icons/battery-wireless-70.ico", Icon.small),
+        6: Icon.load("icons/battery-wireless-60.ico", Icon.small),
         5: Icon.load("icons/battery-wireless-50.ico", Icon.small),
+        4: Icon.load("icons/battery-wireless-40.ico", Icon.small),
         3: Icon.load("icons/battery-wireless-30.ico", Icon.small),
+        2: Icon.load("icons/battery-wireless-20.ico", Icon.small),
         1: Icon.load("icons/battery-wireless-10.ico", Icon.small),
+        0: Icon.load("icons/battery-wireless-0.ico", Icon.small),
     },
     TRAY_OPTIONS = {
         icon: TRAY_ICONS["default"],
@@ -110,9 +115,8 @@ function update_tray(battery, state) {
     } else if (state === 5) { // charging (not full)
         icon = TRAY_ICONS["charging"], tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}`;
     } else {
-        icon = TRAY_ICONS[Math.ceil(battery / 10)]
-            ?? TRAY_ICONS[Math.ceil(battery / 10 - 1)]
-        tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}\nBattery: ${battery}%`
+        icon = TRAY_ICONS[Math.floor(battery / 10)];
+        tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}\nBattery: ${battery}%`;
     }
     tray.update({ icon, tooltip });
 }
