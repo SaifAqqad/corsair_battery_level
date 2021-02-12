@@ -30,7 +30,7 @@ It should work with most corsair headsets.
 ## Running without a console window
 To run it without the console window appearing, launch `app.vbs` instead of running node directly.
 
-you can also add a shortcut to `app.vbs` in `C:\Users\saifo\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\` to run it on startup with the tray icon only.
+you can also add a shortcut to `app.vbs` in `C:\Users\<UserName>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\` to run it on startup with the tray icon only.
 
 ##
 
