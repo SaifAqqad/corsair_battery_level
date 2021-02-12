@@ -10,7 +10,7 @@ It should work with most corsair headsets.
 * Node (and npm)
 * git
 
-##### just install [scoop](scoop.sh) and run `scoop install git nodejs-lts`
+##### just install [scoop](https://scoop.sh) and run `scoop install git nodejs-lts`
 
 ## Usage 
 1. Clone the repository
