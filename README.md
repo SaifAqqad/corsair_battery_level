@@ -5,7 +5,7 @@ It should work with most corsair headsets.
 
 ![](https://user-images.githubusercontent.com/47293197/107494250-3c401b00-6b97-11eb-902e-2fbc47553d89.png)
 
-## Requirments:
+## Requirements:
 * Windows 10 (64 bit)
 * Node (and npm)
 * git
@@ -26,6 +26,11 @@ It should work with most corsair headsets.
     ```powershell
         node .\index.js
     ```
+
+## Dependencies:
+* [node-hid](https://github.com/node-hid/node-hid)
+* [not-the-systray](https://github.com/simonbuchan/node-not-the-systray)
+
 
 ## Running without a console window
 To run it without the console window appearing, launch `app.vbs` instead of running node directly.
