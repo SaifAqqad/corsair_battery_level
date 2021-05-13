@@ -113,7 +113,7 @@ function handle_data([, , battery, , state]) {
 }
 
 function update_console(battery, state) {
-    process.stdout.clearLine();
+    process.stdout.clearLine(0);
     process.stdout.cursorTo(0);
     let bColor = battery >= 40 ? CON_COLOR.green : CON_COLOR.red,
         sColor = state === 0 || state === 2 ? CON_COLOR.red : CON_COLOR.green;
