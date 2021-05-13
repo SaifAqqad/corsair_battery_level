@@ -125,9 +125,11 @@ function update_console(battery, state) {
 function update_tray(battery, state) {
     let icon, tooltip;
     if (state === 0 || DEVICE_STATES[state] === undefined) { //disconnected
-        icon = TRAY_ICONS["default"], tooltip = `${device_info.full_name}: ${DEVICE_STATES[0]}`;
+        icon = TRAY_ICONS["default"];
+        tooltip = `${device_info.full_name}: ${DEVICE_STATES[0]}`;
     } else if (state === 5) { // charging (not full)
-        icon = TRAY_ICONS["charging"], tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}`;
+        icon = TRAY_ICONS["charging"];
+        tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}`;
     } else {
         icon = TRAY_ICONS[Math.floor(battery / 10)];
         tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}\nBattery: ${battery}%`;
