@@ -11,7 +11,6 @@ const DATA_REQ = [0xC9, 0x64],
         0x0A16: "VOID PRO Wireless",
         0x0A1A: "VOID PRO Wireless",
         0x0A55: "VOID ELITE Wireless",
-        0x0A55: "VOID ELITE Wireless",
         0x0A51: "VOID ELITE Wireless",
         0x0A3E: "Virtuoso RGB Wireless",
         0x0A40: "Virtuoso RGB Wireless",
@@ -54,7 +53,8 @@ const DATA_REQ = [0xC9, 0x64],
     },
     MENU_ITEMS = [
         { id: 1, text: "Exit" },
-    ];
+    ],
+    VOID_BATTERY_MICUP = 128;
 let tray = new NotifyIcon(TRAY_OPTIONS),
     menu = new Menu(MENU_ITEMS),
     device_info = null,
@@ -109,12 +109,15 @@ function get_device() {
 // [  0    ,  1  ,   2   ,  3  ,  4  ]
 // reportId,     ,battery,     ,state
 function handle_data([, , battery, , state]) {
+    if (battery > VOID_BATTERY_MICUP) {
+        battery = battery - VOID_BATTERY_MICUP;
+    }
     update_console(battery, state)
     update_tray(battery, state)
 }
 
 function update_console(battery, state) {
-    process.stdout.clearLine();
+    process.stdout.clearLine(0);
     process.stdout.cursorTo(0);
     let bColor = battery >= 40 ? CON_COLOR.green : CON_COLOR.red,
         sColor = state === 0 || state === 2 ? CON_COLOR.red : CON_COLOR.green;
@@ -126,9 +129,11 @@ function update_console(battery, state) {
 function update_tray(battery, state) {
     let icon, tooltip;
     if (state === 0 || DEVICE_STATES[state] === undefined) { //disconnected
-        icon = TRAY_ICONS["default"], tooltip = `${device_info.full_name}: ${DEVICE_STATES[0]}`;
+        icon = TRAY_ICONS["default"];
+        tooltip = `${device_info.full_name}: ${DEVICE_STATES[0]}`;
     } else if (state === 5) { // charging (not full)
-        icon = TRAY_ICONS["charging"], tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}`;
+        icon = TRAY_ICONS["charging"];
+        tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}`;
     } else {
         icon = TRAY_ICONS[Math.floor(battery / 10)];
         tooltip = `${device_info.full_name}: ${DEVICE_STATES[state]}\nBattery: ${battery}%`;
