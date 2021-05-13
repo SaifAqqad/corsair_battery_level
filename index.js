@@ -53,7 +53,8 @@ const DATA_REQ = [0xC9, 0x64],
     },
     MENU_ITEMS = [
         { id: 1, text: "Exit" },
-    ];
+    ],
+    VOID_BATTERY_MICUP = 128;
 let tray = new NotifyIcon(TRAY_OPTIONS),
     menu = new Menu(MENU_ITEMS),
     device_info = null,
@@ -108,6 +109,9 @@ function get_device() {
 // [  0    ,  1  ,   2   ,  3  ,  4  ]
 // reportId,     ,battery,     ,state
 function handle_data([, , battery, , state]) {
+    if (battery > VOID_BATTERY_MICUP) {
+        battery = battery - VOID_BATTERY_MICUP;
+    }
     update_console(battery, state)
     update_tray(battery, state)
 }
