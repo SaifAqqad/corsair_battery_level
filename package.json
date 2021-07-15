@@ -2,7 +2,7 @@
   "name": "corsair_battery_level",
   "version": "2.0.0",
   "description": "Display the current state and battery level of a Corsair headset",
-  "bin": "index.js",
+  "bin": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SaifAqqad/corsair_battery_level.git"
