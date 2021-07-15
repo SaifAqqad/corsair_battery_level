@@ -6,7 +6,7 @@ It should work with most corsair headsets.
 ![](https://user-images.githubusercontent.com/47293197/107494250-3c401b00-6b97-11eb-902e-2fbc47553d89.png)
 
 ## Usage 
-You can either download the [latest build](https://github.com/SaifAqqad/corsair_battery_level/releases/latest/) and run it, or if you have node installed. you can clone the repo, run `npm i` then `node app.js`
+You can either download the [latest build](https://github.com/SaifAqqad/corsair_battery_level/releases/latest/) and run it, or if you have node installed, you can clone the repo, run `npm i` then `node app.js`
 
 ## Build instructions
 1. Install [pkg](https://github.com/vercel/pkg): `npm i -g pkg`
