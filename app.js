@@ -45,13 +45,20 @@ const HID = require('node-hid'),
     },
     MENU_ITEMS = [
         {
+            title: "Refresh device",
+            tooltip: "Refresh device",
+            checked: false,
+            enabled: true,
+            click: init_device
+        },
+        {
             title: "Exit",
             tooltip: "Exit",
             checked: false,
             enabled: true,
             click: () => {
-                tray.kill(false)
-                process.exit(0)
+                tray.kill(false);
+                process.exit(0);
             }
         }
     ],
@@ -59,7 +66,7 @@ const HID = require('node-hid'),
         menu: {
             icon: TRAY_ICONS["default"],
             title: "Corsair battery level",
-            tooltip: "Corsair battery level",
+            tooltip: "No device found",
             items: MENU_ITEMS
         },
         debug: false,
@@ -69,22 +76,29 @@ const HID = require('node-hid'),
     tray = new SysTray(TRAY_OPTIONS);
 tray.onClick(event => {
     if (event.item.click != null) {
-        event.item.click()
+        event.item.click();
     }
 })
 let device_info = device_hid = null;
-tray.ready().then(() => {
-    [device_hid, device_info] = get_device();
+tray.ready().then(init_device);
+
+function init_device() {
+    [device_hid, device_info] = get_HID();
     if (!device_hid) {
-        process.exit(1);
+        reset_tray();
+        return;
     }
-    device_info.full_name = `${device_info.manufacturer} ${KNOWN_PIDS[device_info.productId]}`
+    device_info.full_name = `${device_info.manufacturer} ${KNOWN_PIDS[device_info.productId]}`;
     device_hid.setNonBlocking(1);
     device_hid.on('data', update_tray);
+    device_hid.on('error', () => {
+        reset_tray();
+        device_info = device_hid = null;
+    });
     device_hid.resume();
-})
+}
 
-function get_device() {
+function get_HID() {
     let dList = HID.devices(), hidDevice, infoObj;
     for (let deviceObj of dList) {
         if (deviceObj.vendorId !== CORSAIR_VID || KNOWN_PIDS[deviceObj.productId] === undefined)
@@ -93,10 +107,10 @@ function get_device() {
             hidDevice = new HID.HID(deviceObj.path);
             hidDevice.write(DATA_REQ);
             hidDevice.pause();
-            infoObj = deviceObj
+            infoObj = deviceObj;
             break;
         } catch {
-            hidDevice = infoObj = null
+            hidDevice = infoObj = null;
             continue;
         }
     }
@@ -124,6 +138,18 @@ function update_tray([, , battery, , state]) {
             icon,
             tooltip,
             title: tooltip,
+            items: MENU_ITEMS
+        }
+    });
+}
+
+function reset_tray() {
+    tray.sendAction({
+        type: 'update-menu',
+        menu: {
+            icon: TRAY_ICONS["default"],
+            title: "Corsair battery level",
+            tooltip: "No device found",
             items: MENU_ITEMS
         }
     });
