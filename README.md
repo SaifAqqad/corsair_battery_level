@@ -1,41 +1,22 @@
 # Corsair Battery Level
-Displays the current state and battery level of a Corsair headset and adds a tray icon on the task bar.
+Displays the current state and battery level of a Corsair headset as a tray icon on the task bar.
 
 It should work with most corsair headsets.
 
 ![](https://user-images.githubusercontent.com/47293197/107494250-3c401b00-6b97-11eb-902e-2fbc47553d89.png)
 
-## Requirements:
-* Windows 10 (64 bit)
-* Node (and npm)
-* git
-
-##### just install [scoop](https://scoop.sh) and run `scoop install git nodejs-lts`
-
 ## Usage 
-1. Clone the repository
-    ```powershell
-        git clone https://github.com/SaifAqqad/corsair_battery_level.git
-    ```
-2. Run npm install
-    ```powershell
-        cd .\corsair_battery_level
-        npm install
-    ```
-3. Run index.js
-    ```powershell
-        node .\index.js
-    ```
+You can either download the [latest build](https://github.com/SaifAqqad/corsair_battery_level/releases/latest/) and run it, or if you have node installed. you can clone the repo, run `npm i` then `node app.js`
+
+## Build instructions
+1. Install [pkg](https://github.com/vercel/pkg): `npm i -g pkg`
+
+2. Run `pkg .`
 
 ## Dependencies:
 * [node-hid](https://github.com/node-hid/node-hid)
-* [not-the-systray](https://github.com/simonbuchan/node-not-the-systray)
-
-
-## Running without a console window
-To run it without the console window appearing, launch `app.vbs` instead of running node directly.
-
-you can also add a shortcut to `app.vbs` in `C:\Users\<UserName>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\` to run it on startup with the tray icon only.
+* [node-hide-console-window](https://github.com/hetrodoo/hetrodo-node-hide-console-window-napi)
+* [systray2](https://github.com/felixhao28/node-systray)
 
 ##
 
