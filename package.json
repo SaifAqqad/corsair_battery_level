@@ -19,7 +19,10 @@
     "systray2": "^2.1.2"
   },
   "pkg": {
-    "assets": "icons/*",
+    "assets": [
+      "icons/*",
+      "node_modules/node-hid/build/Release/HID.node"
+    ],
     "targets": [
       "win"
     ],
