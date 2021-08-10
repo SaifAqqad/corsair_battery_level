@@ -9,15 +9,10 @@ It should work with most corsair headsets.
 You can either download the [latest build](https://github.com/SaifAqqad/corsair_battery_level/releases/latest/) and run it, or if you have node installed, you can clone the repo, run `npm i` then `node app.js`
 
 ## Build instructions
-1. Run `npm i`
-
-2. Install [pkg](https://github.com/vercel/pkg) `npm i -g pkg`
-
-3. Run `pkg .`
+Run `npm i` then run the build script `npm run build`
 
 ## Dependencies:
 * [node-hid](https://github.com/node-hid/node-hid)
-* [node-hide-console-window](https://github.com/hetrodoo/hetrodo-node-hide-console-window-napi)
 * [systray2](https://github.com/felixhao28/node-systray)
 
 ##
