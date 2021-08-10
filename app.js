@@ -73,12 +73,9 @@ const HID = require('node-hid'),
     },
     VOID_BATTERY_MICUP = 128,
     tray = new SysTray(TRAY_OPTIONS);
-tray.onClick(event => {
-    if (event.item.click != null) {
-        event.item.click();
-    }
-})
 let device_info = device_hid = null;
+process.on('exit', () => { tray.kill(false); });
+tray.onClick(event => { event.item.click(); });
 tray.ready().then(init_device);
 
 function init_device() {
