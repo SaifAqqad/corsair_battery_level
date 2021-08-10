@@ -1,4 +1,3 @@
-require('node-hide-console-window').hideConsole();
 const HID = require('node-hid'),
     SysTray = require('systray2').default,
     path = require('path'),

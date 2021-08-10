@@ -15,8 +15,14 @@
   "homepage": "https://github.com/SaifAqqad/corsair_battery_level#readme",
   "dependencies": {
     "node-hid": "^2.1.1",
-    "node-hide-console-window": "^2.1.0",
     "systray2": "^2.1.2"
+  },
+  "devDependencies": {
+    "create-nodew-exe": "^1.0.8",
+    "pkg": "^5.3.1"
+  },
+  "scripts": {
+    "build": "pkg . && create-nodew-exe corsair_battery_level.exe  corsair_battery_level.exe"
   },
   "pkg": {
     "assets": [
@@ -26,6 +32,6 @@
     "targets": [
       "win"
     ],
-    "outputPath": "dist"
+    "output" : "corsair_battery_level.exe"
   }
 }
