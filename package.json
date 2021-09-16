@@ -27,7 +27,8 @@
   "pkg": {
     "assets": [
       "icons/*",
-      "node_modules/node-hid/build/Release/HID.node"
+      "node_modules/node-hid/build/Release/HID.node",
+      "node_modules/systray2/traybin/tray_windows_release.exe"
     ],
     "targets": [
       "win"
